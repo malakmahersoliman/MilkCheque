@@ -15,7 +15,6 @@ import com.example.milkchequedemo.domain.model.SessionData
 import com.example.milkchequedemo.presentation.description.DescriptionRoute
 import com.example.milkchequedemo.presentation.menu.MenuRoute
 import com.example.milkchequedemo.presentation.screens.CartScreen
-import com.example.milkchequedemo.presentation.screens.EntrypointtoPayScreen
 import com.example.milkchequedemo.presentation.screens.OrderTrackingScreen
 import com.example.milkchequedemo.presentation.screens.ScanOrderScreen
 import com.example.milkchequedemo.presentation.screens.SessionStartDialog
@@ -167,47 +166,5 @@ fun AppNavGraph(navController: NavHostController) {
                 storeId = storeId.toString(),
             )
         }
-
-        composable(route = Routes.PayEntry) {
-            EntrypointtoPayScreen(
-                onEditClick = {
-
-                    val popped = navController.popBackStack(Routes.Cart, inclusive = false)
-                    if (!popped) {
-                        navController.navigate(Routes.Cart) {
-                            launchSingleTop = true
-                        }
-                    }
-                },
-                onProceedClick = {
-                    navController.navigate(Routes.Payment) {
-                        launchSingleTop = true
-                    }
-                }
-            )
-        }
-
-//removed
-//        composable(route = Routes.Payment) {
-//            // TODO: replace with real data (e.g., from shared VM) once ready
-//            val fake = PaymentUiState(
-//                tableLabel = "Table #5",
-//                mode = PayMode.Individually,
-//                payers = listOf(
-//                    PayerVM("p1", "Malak", "590.99 L.E."),
-//                    PayerVM("p2", "Rola", "368.99 L.E.")
-//                ),
-//                grandTotalText = "959.98 L.E."
-//            )
-//
-//            PaymentScreen(
-//                state = fake,
-//                onBack = { navController.popBackStack() },   // back to Entry
-//                onModeChange = { /* update VM later */ },
-//                onPayPerson = { _, _ -> /* handle later */ },
-//                onPayAll = { /* handle later */ }
-//            )
-//        }
-
     }
 }

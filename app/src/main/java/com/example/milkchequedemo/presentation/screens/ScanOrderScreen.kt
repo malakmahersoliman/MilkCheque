@@ -26,8 +26,6 @@ fun ScanOrderScreen(
     navigateTo: (String) -> Unit
 ) {
     var scanning by remember { mutableStateOf(false) }
-    var torchOn by remember { mutableStateOf(false) }
-    var loading by remember { mutableStateOf(false) }
 
     val snackbarHostState = remember { SnackbarHostState() }
     val scope = rememberCoroutineScope()
@@ -75,7 +73,6 @@ fun ScanOrderScreen(
                         if (scanning) {
                             EmbeddedQrScanner(
                                 modifier = Modifier.fillMaxSize(),
-                                torchOn = torchOn,
                                 onScanned = { code ->
                                     scanning = false
 
@@ -119,12 +116,6 @@ fun ScanOrderScreen(
                         .fillMaxWidth()
                         .height(56.dp)
                 )
-            }
-
-            if (loading) {
-                Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                    CircularProgressIndicator()
-                }
             }
         }
     }

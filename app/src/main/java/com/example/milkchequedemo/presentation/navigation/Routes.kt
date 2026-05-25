@@ -19,8 +19,4 @@ object Routes {
 
     const val Order = "order/{orderId}"
     fun order(orderId: Int) = "order/$orderId"
-
-
-    const val PayEntry = "pay_entry"
-    const val Payment = "payment"
 }
